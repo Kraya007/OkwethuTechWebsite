@@ -1,0 +1,38 @@
+---
+import Navigation from '../components/navigation.astro';
+import Footer from '../components/footer.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+const {title} = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="OkwethuTech is a proudly South-African owned enterprise providing bespoke software, mobile applications, and system integration services tailored to your needs." />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+		<meta property="og:title" content={title} />
+		<meta property="og:image" content="/okwethuLogo.jpeg" />
+		<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "Organization",
+		  "name": "OkwethuTech",
+		  "logo": "https://okwethuTech.com/okwethuLogo.jpeg"
+		}
+		</script>
+	</head>
+	<body>
+        <header class='bg-black text-white font-bold'>
+            <Navigation/>
+        </header>
+        <main class="bg-gradient-to-b from-up to-footer text-white">
+            <slot/>
+        </main>
+		<Footer/>
+	</body>
+</html>

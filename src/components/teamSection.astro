@@ -1,0 +1,92 @@
+---
+import bree from '../assets/Bree.jpg';
+import kev from '../assets/Kev.jpg';
+import gordon from '../assets/Gordon.jpeg';
+import Accordion from '../components/leaders_accordion.astro';
+
+
+const companyHeads = [
+    {
+        id: 1,
+        name: "Brewell Ncita",
+        position: "Chief Executive Officer",
+        about: "Entrusted with the responsibility of charting the company's course by supervising key areas including strategy, finance, leadership, and compliance. Additionally, this role involves adept resource management, promotion of innovation, effective risk oversight, and nurturing stakeholder relationships.",
+        image: bree
+    },
+    {
+        id: 2,
+        name: "Kevin Chiloane",
+        position: "Chief Technology Officer",
+        about: "Embodies creativity and future-focused tech vision. Converting innovative concepts to reality. He partners with the team for impactful tech solutions. Overseeing teams, exploring emerging tech, and ensuring competitiveness. Kevin drives vital technological advancements.",
+        image: kev
+    },
+    {
+        id: 3,
+        name: "Gordon Nthako",
+        position: "Chief Financial Officer",
+        about: "Brings expertise in debt management, financial planning, and investments. His academic journey enhances his knowledge. The CFO's role is vital, encompassing financial management, strategic decisions, risk management, and compliance, crucial for the company's financial prosperity.",
+        image: gordon
+    }
+];
+
+---
+
+<div class="bg-gradient-to-r from-right to-left py-6 text-white" id="team">
+    <section class="max-w-5xl mx-auto">
+       <div>
+        <section class='relative mb-12'>
+            <div  class="flex justify-end">
+                <h1 class="text-4xl w-52 font-bold ">LEADERS OF OKWETHU</h1>
+            </div>
+            <article class="px-2 py-1 max-w-96 bg-gradient-to-r from-left-card to-right-card text-sm right-52 mg:right-56 top-10 text-white absolute">
+                <p>Like minded visionaries with a commitment to offer digital solutions and cultivate African talent.</p>
+            </article>
+        </section>
+       </div>
+
+       <!-- <div class="max-w-5xl overflow-hidden mb-4 mt-48 mg:mt-20">
+        <section class="flex gap-4 my-16 text-xs animate-slide w-max text-center" id="scroller">
+            {stakeholders.map(item => 
+                <article class="w-[145px] ">
+                    <figure>
+                        <div class="w-[145px] h-28 mb-10">
+                            <Image alt='' src={item.image} format="avif"/>
+                        </div>
+                        <figcaption class="text-sm font-semibold">{item.name}</figcaption>
+                    </figure>
+                    <p>{item.position}</p>
+                </article>
+            )}
+           </section>
+       </div> -->
+       
+       <Accordion members={companyHeads}/>
+
+       <div class="border px-4 py-2 font-bold w-fit mx-auto mb-8 hover:bg-white hover:text-black cursor-pointer">
+        <a class="text-center" href="/meet_the_team">Meet The Team</a>
+       </div>
+    </section>
+</div>
+
+<!-- <script>
+    //variables
+    const scroller = document.getElementById('scroller') as HTMLElement;
+
+    //functions
+    function addAnimation(): void{
+        scroller.setAttribute('data-animated', 'true');
+
+        const scrollerContent = Array.from(scroller.children) as HTMLElement[];
+
+        scrollerContent.forEach(item=>{
+            const duplicatedItem = item.cloneNode(true) as HTMLElement;
+            duplicatedItem.setAttribute('class', 'aria-hidden');
+            scroller.appendChild(duplicatedItem);
+        })
+    }
+
+    if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+        addAnimation()
+    }
+    
+</script> -->

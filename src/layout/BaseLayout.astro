@@ -1,0 +1,49 @@
+---
+import Navigation from '../components/navigation.astro';
+import Footer from '../components/footer.astro';
+import { ViewTransitions } from 'astro:transitions';
+
+const {pageTitle} = Astro.props;
+---
+
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="OkwethuTech is a proudly South-African owned enterprise providing bespoke software, mobile applications, and system integration services tailored to your needs." />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<ViewTransitions />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:image" content="/okwethuLogo.jpeg" />
+		<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "Organization",
+		  "name": "OkwethuTech",
+		  "logo": "https://okwethuTech.com/okwethuLogo.jpeg"
+		}
+		</script>
+	</head>
+	<body class="bg-black">
+        <header class=' bg-hero-small bg-contain bg-no-repeat mg:bg-hero-large mg:bg-cover mg:bg-center text-white font-bold min-h-screen'>
+            <Navigation/>
+            <div class='h-90v grid grid-cols-2 grid-rows-2 mg:pt-12 text-center'>
+                <div class='row-start-2 mg:col-start-2 col-span-2'>
+                    <div class='max-w-[520px] mx-4 mg:ml-0 bg-white/5 backdrop-blur-sm p-6 rounded-2xl shadow-xl'>
+                        <h1 class="text-lg font-normal">The Xhosa word for <strong class='text-cyan-400 font-bold'>OURS</strong>  - expressing our steadfast dedication to using cutting-edge digital solutions to uplift and empower our neighbourhood.</h1>
+                        <div class='w-fit mx-auto mt-8 px-6 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all duration-300 hover:-translate-y-1 shadow-[0_0_15px_rgba(8,145,178,0.3)]'>
+                            <a href="/#contactSection" class="font-semibold tracking-wide">Get Started</a>
+                        </div>
+                   </div>
+                    
+                </div>
+            </div>
+        </header>
+        <main>
+            <slot/>
+        </main>
+        <Footer/>
+	</body>
+</html>

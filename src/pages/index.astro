@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layout/BaseLayout.astro';
+import WhoWeAre from '../components/who-we-are.astro';
+import ServiceSection from '../components/serviceSection.astro';
+// import Team from '../components/teamSection.astro';
+import Contact from '../components/contactSection.astro';
+
+const pageTitle = 'OkwethuTech'
+---
+
+<BaseLayout pageTitle = {pageTitle}>
+	<WhoWeAre/>
+	<ServiceSection/>
+	<!-- <Team/> commented out until professional photos -->
+	<Contact/>
+</BaseLayout>

@@ -1,0 +1,129 @@
+---
+import PagesLayout from "../layout/PagesLayout.astro";
+
+import Accordion from '../components/leaders_accordion.astro'
+
+import bree from '../assets/Bree.jpg';
+import kev from '../assets/Kev.jpg';
+import gordon from '../assets/Gordon.jpeg';
+import wanga from '../assets/Wanga.jpg';
+import hlumelo from '../assets/Hlum.jpg';
+import kamo from '../assets/Kamo.jpg';
+import derick from '../assets/Derick.jpg';
+import nick from '../assets/Nic.jpg';
+import kg from '../assets/Kgaugelo.jpg';
+import bless from '../assets/Bless.jpg';
+import akhile from '../assets/Akhile.jpg';
+
+const stakeholders = [
+        {
+            id: 1,
+            name: "Brewell Ncita",
+            position: "Chief Executive Officer",
+            about: "Entrusted with the responsibility of charting the company's course by supervising key areas including strategy, finance, leadership, and compliance. Additionally, this role involves adept resource management, promotion of innovation, effective risk oversight, and nurturing stakeholder relationships.",
+            image: bree
+        },
+        {
+            id: 2,
+            name: "Kevin Chiloane",
+            position: "Chief Technology Officer",
+            about: "Embodies creativity and future-focused tech vision. Converting innovative concepts to reality. He partners with the team for impactful tech solutions. Overseeing teams, exploring emerging tech, and ensuring competitiveness. Kevin drives vital technological advancements.",
+            image: kev
+        },
+        {
+            id: 3,
+            name: "Gordon Nthako",
+            position: "Chief Financial Officer",
+            about: "Brings expertise in debt management, financial planning, and investments. His academic journey enhances his knowledge. The CFO's role is vital, encompossing financial management, strategic decisions, risk management, and compliance, crucial for the company's financial prosperity.",
+            image: gordon
+        },
+        {
+            id: 4,
+            name: "Hlumelo Siyo",
+            position: "Hardware Architect",
+            about: "Orchestrates software-hardware integration, steering strategic design to meet tech objectives. Adept in mechanical engineering, also skilled as a Front-End Developer & Engineering Technician. Believes in conquering challenges head-on.",
+            image: hlumelo
+        },
+        {
+            id: 5,
+            name: "Wanga Tshikombedze",
+            position: "Product Officer",
+            about: "Directs product portfolio development and strategy. With network expertise, he manages products, driving innovation and market success.",
+            image: wanga
+        },
+        {
+            id: 6,
+            name: "Kamogelo Mathye",
+            position: "Marketing Officer",
+            about: "Crafts marketing strategies, drives product sales, and pursues novel opportunities, leveraging mathematical expertise for Okwethu's growth.",
+            image: kamo
+        },
+        {
+            id: 7,
+            name: "Derick Diana",
+            position: "Control Officer",
+            about: "Collaborates closely with CPO to ensure product excellence. With a diverse scientific background, including math, physics, computer science, and stats, he effectively contributes and oversees various business aspects.",
+            image: derick
+        },
+        {
+            id: 8,
+            name: "Nicholas Peloeahae",
+            position: "Software Engineer",
+            about: "Drives business growth through collaborative strategies with CTO, leveraging web development and design expertise for effective scaling.",
+            image: nick
+        },
+        {
+            id: 9,
+            name: "Kgaugelo Bopape",
+            position: "Software Engineer",
+            about: "A passionate geek and software engineer, collaborates closely with the CTO, dedicating hours to coding. Adept in mathematics and programming, he's a prized asset to the team.",
+            image: kg
+        },
+        {
+            id: 10,
+            name: "Blessing Nukeri",
+            position: "DevOps manager ",
+            about: " Programming enthusiast, adept in AWS, leads team integration across diverse technologies. Holds educational background in electrical and computer engineering, enriching expertise.",
+            image: bless
+        },
+        {
+            id: 11,
+            name: "Akhile Ngwenya",
+            position: "Operations Officer",
+            about: " Oversees daily operations, enhancing efficiency. With expertise in mechatronics engineering, he ensures the company's productivity and smooth functioning.",
+            image: akhile
+        }
+    ]
+
+
+const title = 'OkwethuTech - Team'
+
+---
+
+<PagesLayout title = {title}>
+    <div class="font-bold min-h-[800px] py-4">
+        <section class="max-w-5xl mx-auto pt-8 px-4 lg:p-0">
+            <section>
+                <div>
+                    <h1 class="text-3xl">Meet The Team</h1>
+                </div>
+                <article class="px-2 py-1 bg-gradient-to-r from-purple-950 to-yellow-950 max-w-96 ">
+                    <p>Comprises of young professionals with a diverse set of skills that decided to come together to contribute to the South Africa we envision.</p>
+                </article>
+            </section>
+
+            <section class="py-8">
+                <div>
+                    <h2 class="text-2xl"></h2>
+                </div>
+                <!-- <CarouselComponent client:visible/> -->
+
+                <Accordion members={stakeholders}/>
+            </section>
+            <div class="px-4 py-2 w-fit mx-auto text-2xl border hover:bg-white hover:text-black">
+                <a href="/get_in_touch">Contact Us</a>
+            </div>
+        </section>
+    </div>
+</PagesLayout>
+

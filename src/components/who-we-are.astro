@@ -1,0 +1,101 @@
+---
+import { Image } from 'astro:assets';
+
+const businessStatement: any[] = [
+    {
+        header: 'Local Expertise',
+        paragraph: 'Our team comprises of adept South African professionals who grasp the distinct challenges of the local market.'
+
+    },
+    
+    {
+        header: 'Cutting-Edge Innovation',
+        paragraph: 'Innovation propels our efforts. We continuously push boundaries to deliver technology solutions that are ahead of the curve.'
+    },
+    {
+        header: 'Commitment to Excellence',
+        paragraph: 'Our dedication lies in delivering top-tier products and services that surpass expectations, yielding tangible results.'
+    },
+    {
+        header: 'Collaborative approach',
+        paragraph: 'We foster a close collaboration with our clients, forging a partnership that transforms your vision into a reality.'
+    },
+]
+
+import mission from '../icons/mission.png';
+import values from '../icons/values.png';
+import vision from '../icons/vision.png';
+
+
+---
+
+<div class="py-6 bg-side text-white" id="we">
+    <section class="max-w-5xl mx-auto">
+        <section class='relative mb-12 px-4 lg:p-0'>
+            <div>
+                <h1 class="text-4xl w-40 font-bold">WHO WE ARE</h1>
+            </div>
+            <article class="px-2 text-sm py-1 bg-gradient-to-r from-left-card to-right-card max-w-96 text-white absolute left-24 top-12">
+                <p>A proudly South-African owned enterprise that is more than just a software company, fueled by the spirit of invention and teamwork. </p>
+            </article>
+        </section>
+            
+        <section class="max-w-4xl place-content-center mx-auto md:grid-cols-2 grid lg:grid-cols-3 gap-4 mt-32 mg:mt-20 lg:p-0 px-4">
+            <article class="py-6 px-4 text-center max-w-96 mx-auto bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <figure class="p-2">
+                    <div class="border border-white/20 bg-black/30 w-fit p-3 mx-auto rounded-full shadow-inner">
+                        <Image alt="" src={mission} format="avif" width="48" class=" mx-auto"/>
+                    </div>
+                    <figcaption class="font-bold mt-4 text-center text-green-400">Our Mission</figcaption>
+                </figure>
+                <p class="text-slate-300 text-sm leading-relaxed mt-2">To use innovation to our clients' advantage by generating chances that will help them achieve new levels of success. </p>
+            </article>
+    
+            <article class="py-6 px-4 max-w-96 mx-auto bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <figure class="p-2">
+                    <div class="border border-white/20 bg-black/30 w-fit p-3 mx-auto rounded-full shadow-inner">
+                        <Image alt="" src={values} format="avif" width="48" class=" mx-auto"/>
+                    </div>
+                    
+                    <figcaption class="font-bold mt-4 text-center text-green-400">Our Values</figcaption>
+                </figure>
+                <ul class="list-disc pl-8 text-slate-300 text-sm leading-relaxed mt-2 space-y-1">
+                    <li>Utilize Local Expertise</li>
+                    <li>Use a Collaborative Approach</li>
+                    <li>Use Cutting-Edge Innovation</li>
+                    <li>Commitment To Excellence</li>
+                </ul>
+            </article>
+    
+            <article class="py-6 px-4 text-center max-w-96 mx-auto md:col-span-2 lg:col-span-1 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 shadow-lg">
+                <figure class="p-2">
+                    <div class="border border-white/20 bg-black/30 w-fit p-3 mx-auto rounded-full shadow-inner">
+                        <Image alt="" src={vision} format="avif" width="48" class=" mx-auto"/>
+                    </div>
+                    <figcaption class="font-bold mt-4 text-center text-green-400">Our Vision</figcaption>
+                </figure>
+                <p class="text-slate-300 text-sm leading-relaxed mt-2">In our future South Africa, technological advancements have no boundaries. We see a place where world-class tech solutions are locally developed and where enterprises of all sizes may prosper. </p>
+            </article>
+        </section>
+    
+        <section class='grid place-content-center mg:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-16'>
+            {businessStatement.map(item =>
+                item.header === 'Collaborative approach' ?
+                (
+                <article class="bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-[250px] h-[250px] mx-auto text-center flex flex-col items-center justify-center p-6 my-4 md:col-span-3 lg:col-span-1 hover:bg-white/10 transition-all duration-500 hover:scale-105 shadow-[0_0_30px_rgba(8,145,178,0.15)] group">
+                    <h4 class="text-xl font-bold text-green-400 mb-2 group-hover:text-cyan-400 transition-colors">{item.header}</h4>
+                    <p class='text-xs text-slate-300 leading-relaxed'>{item.paragraph}</p>
+                </article>
+                )
+                :
+                (
+                <article class="bg-white/5 backdrop-blur-md border border-white/10 rounded-full w-[250px] h-[250px] mx-auto text-center flex flex-col items-center justify-center p-6 my-4 hover:bg-white/10 transition-all duration-500 hover:scale-105 shadow-[0_0_30px_rgba(8,145,178,0.15)] group">
+                    <h4 class="text-xl font-bold text-green-400 mb-2 group-hover:text-cyan-400 transition-colors">{item.header}</h4>
+                    <p class='text-xs text-slate-300 leading-relaxed'>{item.paragraph}</p>
+                </article>
+                )
+                
+            )}
+        </section>
+    </section>
+</div>

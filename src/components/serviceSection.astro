@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+
+import webs from '../assets/webss.svg'
+import combination from '../assets/combination.svg'
+
+
+---
+
+<div class='py-6 bg-gradient-to-r from-left to-right text-white' id="services">
+    <section class="max-w-5xl mx-auto  ">
+        <section class='relative mb-12 px-4 lg:p-0'>
+            <div>
+                <h1 class="text-4xl w-60 font-bold">SERVICES WE PROVIDE</h1>
+            </div>
+            <article class="px-2 text-sm py-1 bg-gradient-to-r from-left-card to-right-card max-w-96 text-white absolute left-44 top-12">
+                <p>Crafting bespoke technology solutions tailored to the unique needs of South African businesses of all sizes. </p>
+            </article>
+        </section>
+    
+    
+        <section class='px-4 lg:p-0 mt-48 mg:mt-20'>
+            <article class="mt-8 border-l p-4">
+                <div class="">
+                    <h2 class="text-2xl font-semibold w-fit pb-4 ">Custom Engineered Software</h2>
+                </div>
+                <div class='p-4 grid md:grid-cols-3'>
+                    <figure class='mb-4'>
+                        <div class="w-52 h-40 mx-auto col-span-1">
+                            <Image alt='' src={webs} format='avif'/>
+                        </div>
+                    </figure>
+                    <div class="col-span-2">
+                        <p>We specialise in developing innovative <strong class="text-green-300">Web Applications</strong>, designing <strong class="text-green-300">Dynamic Websites</strong>, crafting user-friendly <strong class="text-green-300">Mobile Applications</strong> and implementing a sophisticated <strong class="text-green-300">Content Management System</strong> (CMS) designed to scale with your business growth.</p>
+                    </div>
+                </div>
+            </article>
+                <article class="mt-8 border-r-2 p-4">
+                    <div class="flex md:justify-end">
+                        <h2 class="text-2xl font-semibold w-72 pb-4">Systems Integration</h2>
+                    </div>
+                    <div class='p-4 grid md:grid-cols-3'>
+                        <div class="col-span-2">
+                            <p>Our comprehensive suite of services includes <strong class="text-green-300">Strategic Consulting</strong>, <strong class="text-green-300">Systems Integration</strong>, and ongoing <strong class="text-green-300">Support</strong>, ensuring that your digital ecosystem remains efficient, adaptable, and ahead of the curve.</p>
+                        </div>
+                        <figure class='order-first md:order-last mb-4'>
+                            <div class="w-52 h-40 mx-auto col-span-1">
+                                <Image alt='' src={combination} format='avif'/>
+                            </div>
+                        </figure>
+                    </div>
+                </article>
+                
+                    
+        </section>
+    </section>
+</div>

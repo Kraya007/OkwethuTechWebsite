@@ -1,0 +1,182 @@
+---
+
+---
+<div class="" id="form-container">
+    <form class="grid gap-2 lg:grid-cols-2" id="send-form">
+        <div class="my-4 col-span-2 lg:col-span-1">
+            <input type="text" placeholder="First Name" class="border-b-2 border-red-900 bg-transparent p-2 w-full" name="firstname">
+                <p class="text-sm text-red-500 hidden" id="firstname-error">* First Name cannot be empty.</p>
+        </div>
+        <div class="mb-4 lg:mt-4 col-span-2 lg:col-span-1">
+            <input type="text" placeholder="Last Name" class="border-b-2 border-red-900 bg-transparent p-2 w-full" name="lastname">
+                <p class="text-sm text-red-500 hidden" id="lastname-error">* Last Name cannot be empty.</p>
+        </div>
+        <div class="mb-4 lg:mt-4 col-span-2 lg:col-span-1">
+            <input type="email" placeholder="Email" class="border-b-2 border-red-900 bg-transparent p-2 w-full" name="email">
+            <div id="email-error" class="hidden">
+                <p class="text-sm text-red-500">* Email cannot be empty.</p>
+                <p class="text-sm text-red-500">* Invalid email.</p>
+            </div>
+        </div>
+        <div class="my-4 col-span-2 lg:col-span-1 hidden">
+            <input type="text" placeholder="Honey Pot" class=" border-b-2 border-red-900 bg-transparent p-2 w-full" id="honeypot">
+        </div>
+        <div class="mb-4 lg:mt-4 col-span-2 lg:col-span-1">
+            <label for="service" class="text-slate-400 bg-transparent p-2">Select Service</label>
+            <select name="service" class="p-2 bg-transparent" id="options">
+                <option value=""></option>
+                <option class="text-black" value="Mobile-App">Mobile App</option>
+                <option class="text-black"  value="Consultation">Consultation</option>
+                <option class="text-black"  value="Website">Website/Web Service</option>
+                <option class="text-black"  value="CMS-Information">CMS information</option>
+            </select>
+                <p class="text-sm text-red-500 hidden" id="service-error">* Select a service.</p>
+        </div>
+        <div class="mb-4 lg:mt-4 col-span-2 ">
+            <textarea name="message" id="message" placeholder="Message" rows="10" class="p-4 w-full resize-none bg-transparent border-2 border-red-900 bg-opacity-50 " id="message"></textarea>
+                <p class="text-sm text-red-500 hidden" id="message-error">* Message too short.</p>
+
+            <div class="col-span-2 flex justify-end my-4">
+                <button type="submit" class="px-4 py-1 border-2 hover:bg-white hover:text-black">Send</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="w-72 h-72 mt-8 flex justify-center hidden" id="display-success">
+    <p class="text-center text-white font-black text-4xl">Message received successfully!</p>
+</div>
+
+<script>
+
+    const send_form = document.getElementById('send-form');
+
+    const form_container = document.getElementById('form-container') as HTMLInputElement;
+    const display_success = document.getElementById('display-success') as HTMLInputElement;
+
+    // input errors
+    const firstname_error = document.getElementById('firstname-error') as HTMLInputElement;
+    const lastname_error = document.getElementById('lastname-error') as HTMLInputElement;
+    const email_error = document.getElementById('email-error') as HTMLInputElement;
+    const service_error = document.getElementById('service-error') as HTMLInputElement;
+    const message_error = document.getElementById('message-error') as HTMLInputElement;
+
+
+    // inputs
+    const message = document.getElementById('message') as HTMLInputElement;
+    const options = document.getElementById('options') as HTMLInputElement;
+    const honeypot = document.getElementById('honeypot') as HTMLInputElement;
+
+    let selected_option = '';
+
+    // Fuctions
+    /** Validates our form
+     * @param: firstname, lastname, email, services, message
+     * @return: boolean. True if form is fine. false if not
+     */
+    function manualValidators(
+        firstname: any,
+        lastname: any,
+        email: any,
+        service: any,
+        message:any): boolean{
+
+        const firstName:boolean = firstname.length > 0;
+        const lastName: boolean = lastname.length > 0;
+        const emailCheck: boolean = email.includes("@");
+        const serviceCheck: boolean = service?.length > 0; 
+        const messageCheck: boolean = message?.length > 10; 
+        const honeypotCheck: boolean = honeypot?.value === '';
+
+        if(firstname && lastname && email && serviceCheck && messageCheck && honeypotCheck){
+            return true;
+        }
+        if(!firstName){
+            firstname_error?.classList.remove('hidden');
+        }
+        if(!lastName){
+            lastname_error?.classList.remove('hidden');
+        }
+        if(!emailCheck){
+            email_error?.classList.remove('hidden');
+        }
+        if(!serviceCheck){
+            service_error?.classList.remove('hidden');
+        }
+        if(!messageCheck){
+            message_error?.classList.remove('hidden');
+        }
+        
+        return false;
+    }
+
+    /** option Getter
+     * @returns: selected option on the form
+     */
+    function getOption(): string{
+        options?.addEventListener('click', ()=>{
+            selected_option =  (options.value);
+        })
+        return selected_option;
+    }
+
+    /** Sends the form to the server
+     * @param event 
+     */
+    const handleSubmit = async(event: Event) => {
+        event.preventDefault();  
+        
+        const formData = new FormData(event.target as HTMLFormElement);
+
+        const clientFirstName: FormDataEntryValue | null = formData.get('firstname');
+        const clientLastName: FormDataEntryValue | null  = formData.get('lastname');
+        const clientEmail: FormDataEntryValue | null = formData.get('email');
+        const clientOption: string = getOption();
+        const clientMessage: string = message?.value;
+
+        if(manualValidators(clientFirstName, clientLastName, clientEmail, clientOption, clientMessage)){
+            //submit
+            submitForm(clientFirstName, clientLastName, clientEmail, clientOption, clientMessage);
+            display_success?.classList.remove('hidden');
+            form_container?.classList.add('hidden');
+        }
+    }
+    
+    /** Focusses on the fetch request
+     * @param firstname 
+     * @param lastname 
+     * @param email 
+     * @param service 
+     * @param message 
+     */
+    function submitForm(
+        firstname: any,
+        lastname: any,
+        email: any,
+        service: any,
+        message:any): void{
+
+            fetch("https://email-api-s8kn.onrender.com/api/send-email/", {
+            method: "POST",
+            body: JSON.stringify({
+                firstName: firstname,
+                lastName: lastname,
+                email: email,
+                to: "kevin@okwethuTech.com",
+                subject: service,
+                message: message
+
+            }),
+            headers:{
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+        .then(res => res.json())
+        .catch(e=> {})
+
+    }
+    
+    // submit form
+    send_form?.addEventListener('submit', handleSubmit)
+   
+</script>

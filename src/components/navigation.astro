@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+
+import menu from '../icons/menu.png';
+import logo from '../assets/okwethuLogoCircle.jpg'
+
+
+---
+<section class="sticky top-0 z-50 bg-side/60 backdrop-blur-lg border-b border-white/10 max-w-5xl p-4 mx-auto text-white shadow-lg">
+    <div class="flex justify-between items-center">
+        <div class="">
+            <a href="/" class="flex">
+                <Image alt='' src={logo} width='50' format='avif' class='animate-spin duration-[4000ms] rounded-full'/>
+                <p class="pl-2 pt-4">KWETHU</p>
+            </a>
+        </div>
+        <nav class="lg:block hidden">
+            <ul class="flex justify-between">
+                <li class="mx-4 hover:scale-110 hover:font-black"><a href="/#we">Who We Are</a></li>
+                <li class="mx-4 hover:scale-110 hover:font-black"><a href="/#services">Services</a></li>
+                <!-- <li class="mx-4 hover:scale-110 hover:font-black"><a href="/#team">Meet The Team</a></li> -->
+                <li class="mx-4 hover:scale-110 hover:font-black"><a href="/get_in_touch">Get In Touch</a></li>
+            </ul>
+        </nav>
+        <div class="lg:hidden">
+            <button id="menuBtn"><Image alt='menu' src={menu} format='avif' width='40'/></button>
+        </div>
+    </div>
+    <div class="h-screen absolute w-60 right-0 mg:w-1/2 lg:hidden bg-side hidden z-50" id="menu">
+        <nav>
+            <ul class="">
+                <li class="my-4 px-4"><a href="/#we">Who We Are</a></li>
+                <li class="my-4 px-4"><a href="/#services">Services</a></li>
+                <!-- <li class="my-4 px-4"><a href="/meet_the_team">Our Leaders</a></li> -->
+                <li class="my-4 px-4"><a href="/get_in_touch">Get In Touch</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<script>
+    //button toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+
+    function showMenu() : void{
+        menu?.classList.toggle('hidden')
+    }
+
+    menuBtn?.addEventListener('click', showMenu)
+</script>

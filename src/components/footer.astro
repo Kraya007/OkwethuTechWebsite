@@ -1,0 +1,58 @@
+---
+//tool
+import { Image } from "astro:assets";
+
+//images
+import logo from '../assets/okwethuLogoCircle.jpg';
+
+const date: Date = new Date();
+const year: number = date.getFullYear();
+---
+
+<div class="bg-side text-white">
+    <footer class="max-w-5xl mx-auto py-4 px-4 lg:px-0">
+        <div class="rounded-full w-12 h-12">
+            <a href="/">
+                <Image alt='' src={logo} format='avif' class='animate-spin rounded-full'/>
+            </a>
+        </div>
+
+        <section class="grid place-content-center mg:grid-cols-3 my-4 gap-8">
+            
+            <article class="mg:mx-auto">
+                <div>
+                    <h4 class="text-xl text-slate-400">About Us</h4>
+                    <p class="text-sm "><strong class="text-green-300">OKWETHU</strong> Tech is a tech consultancy company that offers software related solutions that are tailor-made for your specific business for its added success.</p>
+                </div>
+            </article>
+
+            <article class="mg:mx-auto">
+                <div>
+                    <h4 class="text-xl text-slate-400">Company</h4>
+                </div>
+                <ul class="text-sm">
+                    <li class="hover:font-bold"><a href="/#we">Who We Are</a></li>
+                    <li class="hover:font-bold"><a href="/#services">Services</a></li>
+                    <li class="hover:font-bold"><a href="meet_the_team">Meet The Team</a></li>
+                    <li class="hover:font-bold"><a href="get_in_touch">Get In Touch</a></li>
+                </ul>
+            </article>
+
+            <article class="mg:mx-auto">
+                <div>
+                    <h4 class="text-xl text-slate-400"><a href="/#services">Services</a></h4>
+                </div>
+                <ul class="text-sm ">
+                    <li class="">Application Designs</li>
+                    <li class="">Consultation</li>
+                    <li class="">Websites and Mobile Applications</li>
+                    <li class="">System Intergration</li>
+                </ul>
+            </article>
+
+        </section>
+        <div class="text-center py-4 text-sm font-light">
+            <p>&copy; Copyright {year}, OkwethuTech. All rights are reserved.</p>
+        </div>
+    </footer>
+</div>
